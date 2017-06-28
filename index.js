@@ -13,6 +13,9 @@ restService.post('/echo', function(req, res) {
     var a = parseFloat(req.body.result.parameters.firstNum);
     var b = parseFloat(req.body.result.parameters.secondNum);
     var data;
+    if(req.body.result.metadata.intentName === 'address'){
+        speech = 'Địa chỉ cửa hàng: ';
+    }
     if(req.body.result.action === 'searchA'){
         speech = "https://www.lamsao.com/tim-kiem.html?q=" + req.body.result.parameters.article.replace(/ /g,"%20");
     }
@@ -199,3 +202,4 @@ restService.post('/echo', function(req, res) {
 restService.listen((process.env.PORT || 8000), function() {
     console.log("Server up and listening");
 });
+ 
