@@ -16,6 +16,9 @@ restService.post('/echo', function(req, res) {
     if(req.body.result.metadata.intentName === 'address'){
         speech = 'Địa chỉ cửa hàng: ';
     }
+    if(req.body.result.metadata.intentName === 'phone'){
+        speech = 'Liên hệ điện thoại: ';
+    }
     if(req.body.result.action === 'searchA'){
         speech = "https://www.lamsao.com/tim-kiem.html?q=" + req.body.result.parameters.article.replace(/ /g,"%20");
     }
