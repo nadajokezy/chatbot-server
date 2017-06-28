@@ -2,19 +2,19 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const restService = express();
 
-restService.use(bodyParser.urlencoded({
-  extended: true
-}));
+// restService.use(bodyParser.urlencoded({
+//   extended: true
+// }));
 
 restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
-  var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
+  var speech = '';
   var a = parseFloat(req.body.result.parameters.firstNum);
   var b = parseFloat(req.body.result.parameters.secondNum);
   var data;
   if(req.body.result.metadata.intentName === 'address'){
-      speech = 'Địa chỉ cửa hàng: ';
+      speech = 'Địa chỉ cửa hàng: '; 
   }
   if(req.body.result.metadata.intentName === 'phone'){
       speech = 'Liên hệ điện thoại: ';
@@ -22,7 +22,7 @@ restService.post('/echo', function(req, res) {
   return res.json({
     speech: speech,
     displayText: speech,
-    source: 'math-test-by-huy'
+    source: 'chatbot-center'
   });
 });
     
