@@ -1,7 +1,7 @@
 {
-  "name": "webhook-test",
+  "name": "chatbot-server",
   "version": "1.0.0",
-  "description": "Webhook sample",
+  "description": "Server for CenterChatbot",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

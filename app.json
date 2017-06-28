@@ -1,7 +1,7 @@
 {
-  "name": "API.AI webhook demonstration",
-  "description": "API.AI webhook demonstration",
-  "repository": "https://github.com/api-ai/apiai-webhook-sample",
-  "logo": "http://xvir.github.io/img/apiai.png",
+  "name": "API.AI Chatbot server",
+  "description": "API.AI Chatbot server",
+  "repository": "https://github.com/nadajokezy/chatbot-server",
+  "logo": "",
   "keywords": ["api.ai", "natural language"]
 }
