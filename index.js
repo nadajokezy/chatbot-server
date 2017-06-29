@@ -18,16 +18,14 @@ restService.post('/echo', function(req, res) {
   }
   if(req.body.result.action === 'unknown'){
     var query = (req.body.result.resolvedQuery.replace(/ /g,"%20"));
-    var request = require('request');
     var options = {
       url: 'https://api.api.ai/api/query?v=20150910&sessionId=18111996&query='+query,
       headers: {
         'Authorization': 'Bearer c61e2d9d98cb42f6829946be5336be50'
       }
     };
- 
     function callback(error, response, body) {
-      if (!error && response.statusCode == 200) {
+      if (!error && response.statusCode === 200) {
         var info = JSON.parse(body);
         speech = info.result.fulfillment.speech;
       }
