@@ -25,10 +25,8 @@ restService.post('/echo', function(req, res) {
       }
     };
     function callback(error, response, body) {
-      if (!error && response.statusCode === 200) {
-        var info = JSON.parse(body);
-        speech = info.result.fulfillment.speech;
-      }
+      var info = JSON.parse(body);
+      speech = info.result.fulfillment.speech;
     }
     request(options, callback);
     // const https = require('https');
