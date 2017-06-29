@@ -29,6 +29,7 @@ restService.post('/echo', function(req, res) {
       speech = info.result.fulfillment.speech;
     }
     request(options, callback);
+    speech = query;
     // const https = require('https');
     // const post_data = {
     //   query: req.body.resolvedQuery,
