@@ -19,6 +19,31 @@ restService.post('/echo', function(req, res) {
   if(req.body.result.metadata.intentName === 'phone'){
       speech = 'Liên hệ điện thoại: ';
   }
+  if(req.body.result.action === 'unknown'){
+    const https = require('https');
+    const post_data = {
+      query: req.body.resolvedQuery,
+      sessionId: '18111996',
+      lang: 'en'
+    }
+    const post_options = {
+      host: 'api.api.ai',
+      port: '80',
+      path: '/api/query?v=20150910'
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+        'Authorization': 'Bearer c61e2d9d98cb42f6829946be5336be50'
+      }
+    }
+    const post_req = https.request(post_options, function(res){
+      res.on('data',function(chunk){
+        speech = chunk.body.result.fulfillment.speech;
+      });
+    });
+    post_req.write(post_data);
+    post_req.end();
+  }
   return res.json({
     speech: speech,
     displayText: speech,
