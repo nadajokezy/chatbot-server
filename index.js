@@ -17,7 +17,7 @@ restService.post('/echo', function(req, res) {
     speech = 'Liên hệ điện thoại: ';
   }
   if(req.body.result.action === 'unknown'){
-    var query = (req.body.result.resolvedQuery..replace(/ /g,"%20"));
+    var query = (req.body.result.resolvedQuery.replace(/ /g,"%20"));
     var request = require('request');
     var options = {
       url: 'https://api.api.ai/api/query?v=20150910&sessionId=18111996&query='+query,
@@ -27,12 +27,12 @@ restService.post('/echo', function(req, res) {
     };
  
     function callback(error, response, body) {
-    if (!error && response.statusCode == 200) {
-      var info = JSON.parse(body);
-      speech = info.result.fulfillment.speech;
+      if (!error && response.statusCode == 200) {
+        var info = JSON.parse(body);
+        speech = info.result.fulfillment.speech;
+      }
     }
-  }
-  request(options, callback);
+    request(options, callback);
     // const https = require('https');
     // const post_data = {
     //   query: req.body.resolvedQuery,
